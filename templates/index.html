@@ -112,12 +112,11 @@ const hideSpinner=(className)=>{
             fetch('/load_images')
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data)
+                  
                     const result = data.result;
                     const testing_faces = result.testing_faces;
                     const training_faces = result.training_faces;
-                    console.log('testig legth',testing_faces.length)
-                    console.log('training legth',training_faces.length)
+                    
                     const testing_images_html = testing_faces.map(face => `<img src="data:image/jpeg;base64,${ face }" alt=""/>`);
                     const training_images_html = training_faces.map(face => `<img src="data:image/jpeg;base64,${ face }" alt=""/>`);
                     document.getElementById('images').innerHTML = imagesWrapper(training_images_html.join(''), 'Training images') +  imagesWrapper(testing_images_html.join(''), 'Testing images');
